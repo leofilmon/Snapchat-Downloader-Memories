@@ -4,6 +4,16 @@ Automatically download **all** your Snapchat Memories in bulk, including timesta
 
 ![Demo](demo.gif)
 
+## ⚠️ Why use this tool?
+
+Snapchat now offers a built-in option to download your memories directly. However, **the downloaded files are poorly organized**: random filenames, no date sorting, and metadata is not preserved in a user-friendly way.
+
+**This tool solves these problems by:**
+- Organizing your memories by year/month folders
+- Naming files based on their actual capture date
+- Preserving overlays (text, drawings, stickers)
+- Composing final images/videos with overlays applied
+
 ## 📥 Getting your Snapchat Data
 
 ### 1. Login to your account
@@ -13,16 +23,24 @@ Login to Snapchat: [https://accounts.snapchat.com/](https://accounts.snapchat.co
 Go to the export page: [https://accounts.snapchat.com/accounts/downloadmydata](https://accounts.snapchat.com/accounts/downloadmydata)
 
 ### 3. Export configuration
-⚠️ **Important**: To get your memories quickly, click on the **"Request Only Memories"** button (recommended).
+⚠️ **Important settings:**
+
+1. **Date Range**: Select **"All Time"** to get all your memories
+2. Click on the **"Request Only Memories"** button (recommended for faster export)
 
 If you choose to select data manually, make sure to select:
 - ✅ **Memories** (check this option)
 - ✅ **HTML Format** (not JSON)
+- ✅ **Date Range: All Time**
 
 Confirm and wait to receive the download link by email (may take a few hours to a few days).
 
 ### 4. Download the file
-Once received, download the ZIP file and **extract it**. You should have a `memories_history.html` file.
+⚠️ **Important**: You will receive multiple ZIP files. **Only download the first ZIP file** (usually named something like `mydata~XXXXX.zip`).
+
+Inside this ZIP, you will find a `html/` folder containing `memories_history.html`. This is the only file you need for this tool to work.
+
+**Do NOT download the other ZIP files** - they contain the actual media files but without proper organization. This tool will download and organize everything properly using the links in the HTML file.
 
 ---
 
@@ -106,6 +124,7 @@ By default, all your memories will be downloaded to the `snapchat_memories/` fol
 
 **Want to change the output location?**
 Edit the `OUTPUT_DIR` variable in [`src/config.py`](src/config.py):
+
 ```python
 OUTPUT_DIR = "snapchat_memories"  # Change this to your preferred path
 ```
@@ -178,9 +197,9 @@ You can modify settings in `src/config.py`:
 
 ```python
 HTML_FILE = "html/memories_history.html"  # HTML file path
-OUTPUT_DIR = "snapchat_memories"           # Output folder
-MAX_WORKERS = 30                           # Number of parallel threads
-TIMEOUT = 30                               # Timeout per download (seconds)
+OUTPUT_DIR = "snapchat_memories"  # Output folder
+MAX_WORKERS = 30  # Number of parallel threads
+TIMEOUT = 30  # Timeout per download (seconds)
 ```
 
 ---
