@@ -20,3 +20,5 @@ html/*
 
 # Memory files
 snapchat_memories/*
+snapchat_memories_*/*
+*.zip
