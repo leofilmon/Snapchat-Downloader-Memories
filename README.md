@@ -1,5 +1,7 @@
 # Snapchat Memories Downloader
 
+> English | **[Fran&ccedil;ais](README.fr.md)**
+
 Automatically download **all** your Snapchat Memories in bulk, including timestamps, geolocation, and overlays (text/drawings).
 
 ![Demo](demo.gif)
@@ -246,7 +248,7 @@ The script displays in real-time:
 
 ## 🐛 Issues?
 
-If you encounter a problem not listed above, please [create an issue](https://github.com/BebeSniffeur/Snapchat-Downloader-Memories/issues) with:
+If you encounter a problem not listed above, please [create an issue](https://github.com/leofilmon/Snapchat-Downloader-Memories/issues) with:
 - The complete error message
 - Your Python version (`python --version`)
 - Your operating system
