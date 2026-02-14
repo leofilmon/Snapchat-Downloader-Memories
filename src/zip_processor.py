@@ -8,7 +8,7 @@ from datetime import datetime
 from tqdm import tqdm
 from .utils import print_color, Colors
 from .config import MAX_RETRIES, RETRY_DELAY
-from PIL import Image
+from PIL import Image, ImageOps
 
 
 class ZipProcessor:
@@ -96,6 +96,7 @@ class ZipProcessor:
 
         try:
             base_img = Image.open(BytesIO(media_data))
+            base_img = ImageOps.exif_transpose(base_img)
             overlay_img = Image.open(BytesIO(overlay_data))
 
             if base_img.mode != 'RGBA':
@@ -124,7 +125,8 @@ class ZipProcessor:
                 'ffmpeg',
                 '-i', video_path,
                 '-i', overlay_path,
-                '-filter_complex', '[0:v][1:v]overlay',
+                '-filter_complex',
+                '[1:v][0:v]scale2ref[ovr][base];[base][ovr]overlay=format=auto',
                 '-codec:a', 'copy',
                 '-y',
                 output_path
